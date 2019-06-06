@@ -26,7 +26,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         getPeoples()
         tableview.addSubview(refreshControl)
-        print(Date())
     }
     
     func getPeoples() {
@@ -52,10 +51,7 @@ class ViewController: UIViewController {
     }
     
     func changeUpdateLabelStatus() {
-       // let dateComponent = Data().description.components(separatedBy: " ")
         let dateString = Date().description
-        //print(dateString)
-        //print(dateString.components(separatedBy: " "))
         let dateComponent = dateString.components(separatedBy: " ")
         print(dateComponent)
         updateStatus.text = "Last Update: \(dateComponent[0]) \(dateComponent[1])"
