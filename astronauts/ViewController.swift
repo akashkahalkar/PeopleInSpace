@@ -53,7 +53,6 @@ class ViewController: UIViewController {
     func changeUpdateLabelStatus() {
         let dateString = Date().description
         let dateComponent = dateString.components(separatedBy: " ")
-        print(dateComponent)
         updateStatus.text = "Last Update: \(dateComponent[0]) \(dateComponent[1])"
     }
     
@@ -81,7 +80,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
        animateCells(cell, row: indexPath.row)
-        
     }
     
     private func animateCells(_ cell: UITableViewCell, row: Int) {
