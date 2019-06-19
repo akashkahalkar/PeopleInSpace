@@ -16,7 +16,7 @@ class RequestManager {
             print("unable to get request")
             return
         }
-        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
             if let data = data {
                 do {
                     let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]

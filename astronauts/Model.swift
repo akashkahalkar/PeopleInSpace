@@ -13,7 +13,7 @@ import Foundation
 /*{"people": [{"name": "Oleg Kononenko", "craft": "ISS"}, {"name": "David Saint-Jacques", "craft": "ISS"}, {"name": "Anne McClain", "craft": "ISS"}], "number": 3, "message": "success"}*/
 
 
-struct People {
+struct Astronaut {
     var name: String
     var craft: String
     
@@ -30,13 +30,13 @@ enum ResponseStatus {
 typealias ResponseResult = (status: ResponseStatus, message: String?)
 
 struct PeopleResponse {
-    var peoples: [People] = []
+    var peoples: [Astronaut] = []
     var result: ResponseResult = (.fail, "Unable to load Data")
     
     init(_ response: [String: Any]?,_ error: Error?) {
         
         if let peopleArray = response?["people"] as? [[String: Any]] {
-            peoples = peopleArray.map({People.init($0)})
+            peoples = peopleArray.map({Astronaut.init($0)})
             result = (.success, nil)
         }
     }
