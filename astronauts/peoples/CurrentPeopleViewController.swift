@@ -8,15 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CurrentPeopleViewController: BaseViewController {
 
     var astronauts: [Astronaut] = []
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var updateStatus: UILabel!
+    @IBOutlet weak var closeButtonOutlet: UIButton!
     var hasAllCellsAnimated = false
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(CurrentPeopleViewController.handleRefresh(_:)), for: .valueChanged)
         refreshControl.tintColor = UIColor.white
         return refreshControl
     }()
@@ -24,13 +26,17 @@ class ViewController: UIViewController {
     //Mark: Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        getPeoples()
         tableview.addSubview(refreshControl)
+        tableview.delegate = self
+        tableview.dataSource = self
+        changeUpdateLabelStatus()
+        closeButtonOutlet.getFancyButton()
+        closeButtonOutlet.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(BaseViewController.closeButtonTapped)))
     }
     
-    fileprivate func getPeoples() {
-        RequestManager.get {[weak self] (response) in
-            guard let `self` = self else { return }
+    private func getPeoples() {
+        RequestManager.getCurrentPeople {[weak self] (response) in
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 switch response.result.status {
                 case .success:
@@ -62,7 +68,7 @@ class ViewController: UIViewController {
 }
 
 //MARK: - Tableview delgate
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension CurrentPeopleViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = (tableview.dequeueReusableCell(withIdentifier: DetailsTableViewCell.identifier, for: indexPath) as? DetailsTableViewCell)!

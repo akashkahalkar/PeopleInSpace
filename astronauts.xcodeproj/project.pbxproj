@@ -7,26 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C697A7922C3405D00B32ADA /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C697A7822C3405D00B32ADA /* Enums.swift */; };
+		2C6A76B322C362CC00C4CC9E /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6A76B222C362CC00C4CC9E /* DateUtility.swift */; };
+		2C6A76B622C365CC00C4CC9E /* PassTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6A76B522C365CC00C4CC9E /* PassTimeCell.swift */; };
+		2C6A76BA22C37B6A00C4CC9E /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6A76B922C37B6A00C4CC9E /* PaddingLabel.swift */; };
+		2C6A76BD22C3974000C4CC9E /* ReverseGeoCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6A76BC22C3974000C4CC9E /* ReverseGeoCode.swift */; };
+		2C88BCB522BC9A1F008B041C /* AstronautHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C88BCB422BC9A1F008B041C /* AstronautHomeViewController.swift */; };
+		2C88BCB722BCA3C2008B041C /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C88BCB622BCA3C2008B041C /* HomeCollectionViewCell.swift */; };
+		2C88BCB922BCA7E8008B041C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C88BCB822BCA7E8008B041C /* Extensions.swift */; };
+		2C88BCC222BCD62B008B041C /* PassTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C88BCC122BCD62B008B041C /* PassTimesViewController.swift */; };
+		2C88BCC522BCD744008B041C /* Astronauts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C88BCC422BCD744008B041C /* Astronauts.swift */; };
+		2C88BCC722BCD7BA008B041C /* PassTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C88BCC622BCD7BA008B041C /* PassTime.swift */; };
+		2C88BCC922BCF7CB008B041C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C88BCC822BCF7CB008B041C /* BaseViewController.swift */; };
+		2CB3E7A222BB4644001F1A98 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB3E7A122BB4644001F1A98 /* CurrentLocationViewController.swift */; };
+		2CB3E7A622BB654C001F1A98 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB3E7A522BB654C001F1A98 /* AnnotationView.swift */; };
 		380D64B6223AA668002D3E85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380D64B5223AA668002D3E85 /* AppDelegate.swift */; };
-		380D64B8223AA668002D3E85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380D64B7223AA668002D3E85 /* ViewController.swift */; };
+		380D64B8223AA668002D3E85 /* CurrentPeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380D64B7223AA668002D3E85 /* CurrentPeopleViewController.swift */; };
 		380D64BB223AA668002D3E85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380D64B9223AA668002D3E85 /* Main.storyboard */; };
 		380D64BD223AA668002D3E85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 380D64BC223AA668002D3E85 /* Assets.xcassets */; };
 		380D64C0223AA668002D3E85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380D64BE223AA668002D3E85 /* LaunchScreen.storyboard */; };
 		380D64C8223AA6D5002D3E85 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380D64C7223AA6D5002D3E85 /* RequestManager.swift */; };
-		380D64CA223AA8A8002D3E85 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380D64C9223AA8A8002D3E85 /* Model.swift */; };
+		380D64CA223AA8A8002D3E85 /* CrafLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380D64C9223AA8A8002D3E85 /* CrafLocation.swift */; };
 		380D64CD223AB7B9002D3E85 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380D64CC223AB7B9002D3E85 /* DetailsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C697A7822C3405D00B32ADA /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		2C6A76B222C362CC00C4CC9E /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
+		2C6A76B522C365CC00C4CC9E /* PassTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassTimeCell.swift; sourceTree = "<group>"; };
+		2C6A76B922C37B6A00C4CC9E /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		2C6A76BC22C3974000C4CC9E /* ReverseGeoCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeoCode.swift; sourceTree = "<group>"; };
+		2C88BCB422BC9A1F008B041C /* AstronautHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautHomeViewController.swift; sourceTree = "<group>"; };
+		2C88BCB622BCA3C2008B041C /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		2C88BCB822BCA7E8008B041C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2C88BCC122BCD62B008B041C /* PassTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassTimesViewController.swift; sourceTree = "<group>"; };
+		2C88BCC422BCD744008B041C /* Astronauts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astronauts.swift; sourceTree = "<group>"; };
+		2C88BCC622BCD7BA008B041C /* PassTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassTime.swift; sourceTree = "<group>"; };
+		2C88BCC822BCF7CB008B041C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2CB3E7A122BB4644001F1A98 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
+		2CB3E7A522BB654C001F1A98 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		380D64B2223AA668002D3E85 /* astronauts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = astronauts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		380D64B5223AA668002D3E85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		380D64B7223AA668002D3E85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		380D64B7223AA668002D3E85 /* CurrentPeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPeopleViewController.swift; sourceTree = "<group>"; };
 		380D64BA223AA668002D3E85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		380D64BC223AA668002D3E85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		380D64BF223AA668002D3E85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		380D64C1223AA668002D3E85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		380D64C7223AA6D5002D3E85 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
-		380D64C9223AA8A8002D3E85 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		380D64C9223AA8A8002D3E85 /* CrafLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrafLocation.swift; sourceTree = "<group>"; };
 		380D64CC223AB7B9002D3E85 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -41,11 +69,117 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C6A76B422C365AA00C4CC9E /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				2C6A76B522C365CC00C4CC9E /* PassTimeCell.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		2C6A76B722C3668D00C4CC9E /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				2C697A7822C3405D00B32ADA /* Enums.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		2C6A76B822C37B5400C4CC9E /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				2C6A76B922C37B6A00C4CC9E /* PaddingLabel.swift */,
+				2C6A76BC22C3974000C4CC9E /* ReverseGeoCode.swift */,
+			);
+			path = Subclasses;
+			sourceTree = "<group>";
+		};
+		2C6A76BB22C3802500C4CC9E /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				380D64CB223AB749002D3E85 /* cell */,
+				2C88BCB422BC9A1F008B041C /* AstronautHomeViewController.swift */,
+				2C88BCC822BCF7CB008B041C /* BaseViewController.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		2C88BCBA22BCD560008B041C /* peoples */ = {
+			isa = PBXGroup;
+			children = (
+				380D64CC223AB7B9002D3E85 /* DetailsTableViewCell.swift */,
+				380D64B7223AA668002D3E85 /* CurrentPeopleViewController.swift */,
+			);
+			path = peoples;
+			sourceTree = "<group>";
+		};
+		2C88BCBB22BCD56D008B041C /* passTimes */ = {
+			isa = PBXGroup;
+			children = (
+				2C6A76B422C365AA00C4CC9E /* cell */,
+				2C88BCC122BCD62B008B041C /* PassTimesViewController.swift */,
+			);
+			path = passTimes;
+			sourceTree = "<group>";
+		};
+		2C88BCBC22BCD575008B041C /* currentLocation */ = {
+			isa = PBXGroup;
+			children = (
+				2CB3E7A522BB654C001F1A98 /* AnnotationView.swift */,
+				2CB3E7A122BB4644001F1A98 /* CurrentLocationViewController.swift */,
+			);
+			path = currentLocation;
+			sourceTree = "<group>";
+		};
+		2C88BCBD22BCD580008B041C /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				380D64C7223AA6D5002D3E85 /* RequestManager.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		2C88BCBE22BCD5A5008B041C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				380D64C9223AA8A8002D3E85 /* CrafLocation.swift */,
+				2C88BCC422BCD744008B041C /* Astronauts.swift */,
+				2C88BCC622BCD7BA008B041C /* PassTime.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2C88BCBF22BCD5B3008B041C /* others */ = {
+			isa = PBXGroup;
+			children = (
+				380D64B5223AA668002D3E85 /* AppDelegate.swift */,
+				380D64BC223AA668002D3E85 /* Assets.xcassets */,
+			);
+			path = others;
+			sourceTree = "<group>";
+		};
+		2C88BCC022BCD5C4008B041C /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				380D64B9223AA668002D3E85 /* Main.storyboard */,
+				380D64BE223AA668002D3E85 /* LaunchScreen.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		2C88BCC322BCD640008B041C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2C88BCB822BCA7E8008B041C /* Extensions.swift */,
+				2C6A76B222C362CC00C4CC9E /* DateUtility.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		380D64A9223AA668002D3E85 = {
 			isa = PBXGroup;
 			children = (
 				380D64B4223AA668002D3E85 /* astronauts */,
-				380D64B3223AA668002D3E85 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,20 +189,25 @@
 				380D64B2223AA668002D3E85 /* astronauts.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		380D64B4223AA668002D3E85 /* astronauts */ = {
 			isa = PBXGroup;
 			children = (
-				380D64CB223AB749002D3E85 /* cell */,
-				380D64B5223AA668002D3E85 /* AppDelegate.swift */,
-				380D64B7223AA668002D3E85 /* ViewController.swift */,
-				380D64B9223AA668002D3E85 /* Main.storyboard */,
-				380D64BC223AA668002D3E85 /* Assets.xcassets */,
-				380D64BE223AA668002D3E85 /* LaunchScreen.storyboard */,
+				2C6A76BB22C3802500C4CC9E /* HomeView */,
+				2C6A76B822C37B5400C4CC9E /* Subclasses */,
+				2C6A76B722C3668D00C4CC9E /* Enums */,
+				2C88BCC322BCD640008B041C /* Extension */,
+				2C88BCC022BCD5C4008B041C /* storyboard */,
+				2C88BCBF22BCD5B3008B041C /* others */,
+				2C88BCBE22BCD5A5008B041C /* Model */,
+				2C88BCBD22BCD580008B041C /* NetworkLayer */,
+				2C88BCBC22BCD575008B041C /* currentLocation */,
+				2C88BCBB22BCD56D008B041C /* passTimes */,
+				2C88BCBA22BCD560008B041C /* peoples */,
 				380D64C1223AA668002D3E85 /* Info.plist */,
-				380D64C7223AA6D5002D3E85 /* RequestManager.swift */,
-				380D64C9223AA8A8002D3E85 /* Model.swift */,
+				380D64B3223AA668002D3E85 /* Products */,
 			);
 			path = astronauts;
 			sourceTree = "<group>";
@@ -76,7 +215,7 @@
 		380D64CB223AB749002D3E85 /* cell */ = {
 			isa = PBXGroup;
 			children = (
-				380D64CC223AB7B9002D3E85 /* DetailsTableViewCell.swift */,
+				2C88BCB622BCA3C2008B041C /* HomeCollectionViewCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -108,11 +247,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = akash;
 				TargetAttributes = {
 					380D64B1223AA668002D3E85 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -154,10 +294,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				380D64C8223AA6D5002D3E85 /* RequestManager.swift in Sources */,
+				2CB3E7A222BB4644001F1A98 /* CurrentLocationViewController.swift in Sources */,
 				380D64CD223AB7B9002D3E85 /* DetailsTableViewCell.swift in Sources */,
-				380D64B8223AA668002D3E85 /* ViewController.swift in Sources */,
+				2CB3E7A622BB654C001F1A98 /* AnnotationView.swift in Sources */,
+				380D64B8223AA668002D3E85 /* CurrentPeopleViewController.swift in Sources */,
+				2C88BCC922BCF7CB008B041C /* BaseViewController.swift in Sources */,
+				2C6A76BA22C37B6A00C4CC9E /* PaddingLabel.swift in Sources */,
+				2C6A76BD22C3974000C4CC9E /* ReverseGeoCode.swift in Sources */,
+				2C88BCB722BCA3C2008B041C /* HomeCollectionViewCell.swift in Sources */,
+				2C697A7922C3405D00B32ADA /* Enums.swift in Sources */,
+				2C88BCC722BCD7BA008B041C /* PassTime.swift in Sources */,
 				380D64B6223AA668002D3E85 /* AppDelegate.swift in Sources */,
-				380D64CA223AA8A8002D3E85 /* Model.swift in Sources */,
+				2C88BCC522BCD744008B041C /* Astronauts.swift in Sources */,
+				380D64CA223AA8A8002D3E85 /* CrafLocation.swift in Sources */,
+				2C88BCC222BCD62B008B041C /* PassTimesViewController.swift in Sources */,
+				2C88BCB522BC9A1F008B041C /* AstronautHomeViewController.swift in Sources */,
+				2C6A76B322C362CC00C4CC9E /* DateUtility.swift in Sources */,
+				2C6A76B622C365CC00C4CC9E /* PassTimeCell.swift in Sources */,
+				2C88BCB922BCA7E8008B041C /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +351,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -204,6 +359,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -254,6 +410,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -261,6 +418,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -299,7 +457,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = company.astronauts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -313,7 +471,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = company.astronauts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -22,7 +22,7 @@ class DetailsTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
- 
+    
     func setupCell(with astronaut: Astronaut) {
         nameLabel.text = "\(tag). \(astronaut.name)"
         craft.text = "Craft: \(astronaut.craft)"
