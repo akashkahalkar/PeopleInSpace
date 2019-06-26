@@ -46,3 +46,7 @@ Location info about ISS (International space station).
  </table>
  
 > This module lists date, time and duration for which ISS will be visible from current location of your device.
+
+# References
+- For Gradient Colors [Gradient Animator](https://github.com/iLeafSolutionsPvtLtd/GradientAnimator)
+- All APIs [Open Notify](http://api.open-notify.org/)
