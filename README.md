@@ -1,5 +1,6 @@
 # PeopleInSpace
 Lists people in space using [Open Notify](http://api.open-notify.org/) api.
+Location info about ISS (International space station).
 
 ## People in space module
   
@@ -29,7 +30,7 @@ Lists people in space using [Open Notify](http://api.open-notify.org/) api.
     </tr>
 </table>
 
-> Give info on map about the current location ISS space craft.
+> Give info on map about the current location ISS.
 
 ## ISS PassTime
 
