@@ -44,4 +44,4 @@ Lists people in space using [Open Notify](http://api.open-notify.org/) api.
      </tr>
  </table>
  
-> This module lists time and date for next ISS visibility from your current location.
+> This module lists date, time and duration for which ISS will be visible from current location of your device.
