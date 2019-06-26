@@ -18,10 +18,6 @@ class DetailsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         customBackgroud.layer.cornerRadius = 30
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     
     func setupCell(with astronaut: Astronaut) {
         nameLabel.text = "\(tag). \(astronaut.name)"

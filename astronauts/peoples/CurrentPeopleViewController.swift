@@ -10,6 +10,7 @@ import UIKit
 
 class CurrentPeopleViewController: BaseViewController {
 
+    //MARK: - properties
     var astronauts: [Astronaut] = []
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var updateStatus: UILabel!
@@ -34,6 +35,7 @@ class CurrentPeopleViewController: BaseViewController {
         closeButtonOutlet.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(BaseViewController.closeButtonTapped)))
     }
     
+    //MARK: - Api call
     private func getPeoples() {
         RequestManager.getCurrentPeople {[weak self] (response) in
             guard let self = self else { return }
