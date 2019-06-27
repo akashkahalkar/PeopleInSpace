@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-enum RequestmanagerError: Error {
+enum RequestManagerError: Error {
     case urlNotFound, unrechable, noData
 }
 
@@ -21,7 +21,7 @@ class RequestManager {
     class func getCurrentPeople(completion: @escaping(PeopleResponse) -> Void) {
         let urlString = Urls.peopleInSpaceUrl
         guard let url = URL(string: urlString) else {
-            print("unable to get request")
+            completion(PeopleResponse(nil, RequestManagerError.urlNotFound))
             return
         }
         URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
@@ -44,7 +44,7 @@ class RequestManager {
     class func getCurrentLocation(completion: @escaping(CraftLocationResponse) -> Void) {
         let urlString = Urls.currentLocationUrl
         guard let url = URL(string: urlString) else {
-            completion(CraftLocationResponse(nil, RequestmanagerError.urlNotFound))
+            completion(CraftLocationResponse(nil, RequestManagerError.urlNotFound))
             return
         }
         
@@ -72,7 +72,7 @@ class RequestManager {
         let finalString = Urls.getPassTimeUrl(for: location)
         
         guard let url = URL(string: finalString) else {
-            completion(ISSPassTimeResponse(nil, RequestmanagerError.urlNotFound))
+            completion(ISSPassTimeResponse(nil, RequestManagerError.urlNotFound))
             return
         }
         

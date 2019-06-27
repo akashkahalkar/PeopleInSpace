@@ -60,7 +60,6 @@ extension AstronautHomeViewController: UICollectionViewDataSource, UICollectionV
                        image: cellType.image()!,
                        peopleCount: astronauts.count)
         cell.tapEvent = { tag in
-            print(tag)
             self.pushScreens(for: CollectionsCellType(rawValue: tag)!)
         }
         return cell

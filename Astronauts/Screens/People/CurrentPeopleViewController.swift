@@ -24,7 +24,7 @@ class CurrentPeopleViewController: BaseViewController {
         return refreshControl
     }()
     
-    //Mark: Life cycle methods
+    //Mark: Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         tableview.addSubview(refreshControl)
@@ -59,9 +59,16 @@ class CurrentPeopleViewController: BaseViewController {
     }
     
     fileprivate func changeUpdateLabelStatus() {
-        let dateString = Date().description
-        let dateComponent = dateString.components(separatedBy: " ")
-        updateStatus.text = "Last Update: \(dateComponent[0]) \(dateComponent[1])"
+        
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .medium
+        let dateString = formatter.string(from: Date())
+        
+//        let dateString = Date().description
+//        let dateComponent = dateString.components(separatedBy: " ")
+        updateStatus.text = "Last update: \(dateString)"
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {

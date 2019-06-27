@@ -54,7 +54,7 @@ class PassTimesViewController: BaseViewController {
     }
     
     private func UpdateCurrentLocationLabel(location: CLLocation) {
-        let reverseGeoCode = RevereseGeoCode(latitiude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let reverseGeoCode = RevereseGeocode(latitiude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         reverseGeoCode.getAddress { (address) in
             DispatchQueue.main.async {
                 if let currentLocation = address {
@@ -65,19 +65,15 @@ class PassTimesViewController: BaseViewController {
     }
     
     private func requestPassTimeData(location: CLLocation) {
-        RequestManager.getPassTime(location: location) {[weak self] (passTimeeRsponse) in
+        RequestManager.getPassTime(location: location) {[weak self] (passTimeRsponse) in
             DispatchQueue.main.async {
                 guard let self = self else { return }
-                switch passTimeeRsponse.result.status {
+                switch passTimeRsponse.result.status {
                 case .success:
-                    self.passTimeData = passTimeeRsponse.passes
+                    self.passTimeData = passTimeRsponse.passes
                     self.tableView.reloadData()
-                    for item in self.passTimeData {
-                        print("Visisble on \(item.date)")
-                        print("For duration \(item.time.minute)")
-                    }
                 case .fail:
-                    print("Response Failed")
+                    print("Response failed.")
                 }
             }
         }

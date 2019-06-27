@@ -28,7 +28,7 @@ struct ISSPassTime {
 }
 
 struct ISSPassTimeResponse {
-    var result: ResponseResult = (.fail, "Unable to getData")
+    var result: ResponseResult = (.fail, "Unable to get data.")
     
     var passes: [ISSPassTime] = []
     

@@ -28,7 +28,7 @@ class CurrentLocationViewController: BaseViewController {
      return CLGeocoder()
     }()
     
-    //MARK: - Life Cycle methods
+    //MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.isHidden = true
@@ -56,7 +56,7 @@ class CurrentLocationViewController: BaseViewController {
         //Title label
         let label = UILabel(frame: CGRect(x: 20, y: 50, width: view.bounds.width - 50, height: 60))
         label.font = UIFont.systemFont(ofSize: 25, weight: .medium)
-        label.text = "Current Location of ISS"
+        label.text = "Current location of the ISS"
         label.textColor = UIColor.white
         label.textAlignment = .center
         view.addSubview(label)
@@ -74,7 +74,7 @@ class CurrentLocationViewController: BaseViewController {
 
     
     private func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(getCraftLocation), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(updateCraftLocation), userInfo: nil, repeats: true)
         timer.fire()
     }
     
@@ -92,18 +92,17 @@ class CurrentLocationViewController: BaseViewController {
     }
     
     //MARK: - API calls
-    @objc fileprivate func getCraftLocation() {
-        print("call to get Craft location")
-        RequestManager.getCurrentLocation {[weak self] (craftresponse) in
+    @objc fileprivate func updateCraftLocation() {
+        RequestManager.getCurrentLocation {[weak self] (craftLocationResponse) in
             guard let self = self else { return }
             
             DispatchQueue.main.async {
-                switch craftresponse.result.status {
+                switch craftLocationResponse.result.status {
                 case .success:
                     self.removeErrorLabel()
                     self.mapView.removeAnnotations(self.mapView.annotations)
                     self.mapView.isHidden = false
-                    let location = craftresponse.craftLocation.location
+                    let location = craftLocationResponse.craftLocation.location
                     self.getAddressFromLatLon(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
                     self.centerMap(on: location)
                     self.addPinToMap(for: location)
@@ -120,7 +119,7 @@ class CurrentLocationViewController: BaseViewController {
         label.frame = view.frame
         label.center = view.center
         label.textAlignment = .center
-        label.text = "No Data Availabel"
+        label.text = "No data availabel."
         view.addSubview(label)
     }
     
@@ -128,10 +127,10 @@ class CurrentLocationViewController: BaseViewController {
         label.removeFromSuperview()
     }
     
-    //MARK: - Reverse GEOCoding
+    //MARK: - Reverse Geocoding
     func getAddressFromLatLon(latitude: Double, longitude: Double) {
         
-        let reverseGeoCode = RevereseGeoCode(latitiude: latitude, longitude: longitude)
+        let reverseGeoCode = RevereseGeocode(latitiude: latitude, longitude: longitude)
         reverseGeoCode.getAddress { (address) in
             DispatchQueue.main.async {
                 if let currentLocation = address {
@@ -144,12 +143,11 @@ class CurrentLocationViewController: BaseViewController {
     }
 }
 
-//MAR: - Mapview Delegates
+//MAR: - MapView Delegates
 extension CurrentLocationViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let newAnnotation = annotation as? CraftAnnotation else {return nil}
-        print("Annotation count: \(mapView.annotations.count)")
         let identifier = "craft"
         var view: MKAnnotationView
         
@@ -163,7 +161,6 @@ extension CurrentLocationViewController: MKMapViewDelegate {
         view.canShowCallout = false
         view.image = nil
         view.image = #imageLiteral(resourceName: "spcaeCraft")
-        print(mapView.annotations.count)
         return view
     }
 }

@@ -40,7 +40,7 @@ struct CraftLocation {
 }
 
 struct CraftLocationResponse {
-    var result: ResponseResult = (.fail, "Unable to load Data")
+    var result: ResponseResult = (.fail, "Unable to load data")
     var craftLocation = CraftLocation([: ])
     
     init(_ response: [String: Any]?, _ error: Error?) {

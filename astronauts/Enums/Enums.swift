@@ -40,6 +40,9 @@ struct Urls {
     
 }
 
+/*
+ Source Gradient colors: https://github.com/iLeafSolutionsPvtLtd/GradientAnimator
+ */
 enum FlatColors {
     case Sunrise, Amin, Maldives, DIMIGO, NeonLife, BlueLagoon, Celestial, Kyoopal, SolidStone, GentleCare
     

@@ -30,7 +30,6 @@ extension UIView {
         layer.shadowOffset = CGSize(width: 3, height: 3)
         layer.shadowRadius = 10
         layer.masksToBounds = false
-
     }
 }
 
