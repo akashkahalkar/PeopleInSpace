@@ -1,6 +1,6 @@
 # PeopleInSpace
-Lists people in space using [Open Notify](http://api.open-notify.org/) api.
-Location info about ISS (International space station).
+A beautifull Application which lists people currently in space using [Open Notify](http://api.open-notify.org/) api.
+It also show current location info about ISS (International space station).
 
 ## People in space module
   
