@@ -24,8 +24,10 @@ class AstronautHomeViewController: UIViewController {
         addCollectionViewBackground()
     }
     
-    func getPeopleInSpace() {
-        RequestManager.getCurrentPeople { (peoples) in
+    private func getPeopleInSpace() {
+        RequestManager.getCurrentPeople {[weak self] (peoples) in
+            
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 switch peoples.result.status {
                     
@@ -33,16 +35,27 @@ class AstronautHomeViewController: UIViewController {
                     self.astronauts = peoples.peoples
                     self.collectionView.reloadData()
                 case .fail:
-                    print("failed")
+                    let errorMsg = peoples.result.message ?? "Error while fetching data"
+                    let alert = UIAlertController.init(title: "Error",
+                                                       message: errorMsg,
+                                                       preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { [weak self] _ in
+                        guard let self = self else { return }
+                        self.getPeopleInSpace()
+                    })
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }
     }
     
     private func addCollectionViewBackground() {
+        
         let gView = UIView(frame: view.frame)
         let gradientLayer = CAGradientLayer()
         let colors = FlatColors.DIMIGO.colors()
+        
         gradientLayer.colors = [colors[3].cgColor, colors[0].cgColor]
         gradientLayer.frame = gView.frame
         gView.layer.addSublayer(gradientLayer)
@@ -51,6 +64,7 @@ class AstronautHomeViewController: UIViewController {
 }
 
 extension AstronautHomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
@@ -91,18 +105,25 @@ extension AstronautHomeViewController: UICollectionViewDataSource, UICollectionV
     }
     
     private func pushScreens(for cellType: CollectionsCellType) {
+        
+        var viewControllerToPresent: UIViewController?
+        
         switch cellType {
-
+        
         case .peopleCell:
             let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CurrentPeopleViewController") as? CurrentPeopleViewController
             viewController?.astronauts = self.astronauts
-            present(viewController!, animated: true, completion: nil)
+            viewControllerToPresent = viewController
         case .passTime:
             let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CurrentLocationViewController") as? CurrentLocationViewController
-            present(viewController!, animated: true, completion: nil)
+            viewControllerToPresent = viewController
         case .currentLocation:
             let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PassTimesViewController") as? PassTimesViewController
-            present(viewController!, animated: true, completion: nil)
+            viewControllerToPresent = viewController
         }
+        
+        guard let viewController = viewControllerToPresent else { return }
+        present(viewController, animated: true, completion: nil)
     }
 }
+

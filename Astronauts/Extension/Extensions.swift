@@ -11,7 +11,10 @@ import UIKit
 
 extension UIView {
     
-    func addGradientLayer(colors: [UIColor], cornerRadius: CGFloat = 10, startPoint: GradientPoints = .top, endPoint: GradientPoints = .bottom) {
+    func addGradientLayer(colors: [UIColor],
+                          cornerRadius: CGFloat = 10,
+                          startPoint: GradientPoints = .top,
+                          endPoint: GradientPoints = .bottom) {
         let gLayer = CAGradientLayer()
         gLayer.frame = bounds
         gLayer.cornerRadius = cornerRadius
@@ -22,9 +25,8 @@ extension UIView {
     }
     
     func addShadow() {
-        layer.shadowPath =
-            UIBezierPath(roundedRect: bounds,
-                         cornerRadius: layer.cornerRadius).cgPath
+        layer.shadowPath = UIBezierPath(roundedRect: bounds,
+                                        cornerRadius: layer.cornerRadius).cgPath
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.5
         layer.shadowOffset = CGSize(width: 3, height: 3)

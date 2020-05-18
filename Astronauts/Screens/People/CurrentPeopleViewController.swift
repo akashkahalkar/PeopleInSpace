@@ -32,7 +32,9 @@ class CurrentPeopleViewController: BaseViewController {
         tableview.dataSource = self
         changeUpdateLabelStatus()
         closeButtonOutlet.getFancyButton()
-        closeButtonOutlet.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(BaseViewController.closeButtonTapped)))
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(BaseViewController.closeButtonTapped))
+        closeButtonOutlet.addGestureRecognizer(tapGesture)
     }
     
     //MARK: - Api call
@@ -40,19 +42,27 @@ class CurrentPeopleViewController: BaseViewController {
         RequestManager.getCurrentPeople {[weak self] (response) in
             guard let self = self else { return }
             DispatchQueue.main.async {
+                if self.refreshControl.isRefreshing {
+                    self.refreshControl.endRefreshing()
+                }
                 switch response.result.status {
                 case .success:
+                    
                     self.astronauts = response.peoples
                     self.tableview.reloadData()
                     self.changeUpdateLabelStatus()
-                    if self.refreshControl.isRefreshing {
-                        self.refreshControl.endRefreshing()
-                    }
                 case .fail:
-                    print("response fail - \(response.result.message ?? "")")
-                    if self.refreshControl.isRefreshing {
-                        self.refreshControl.endRefreshing()
-                    }
+                    
+                    let errorMsg = response.result.message ?? "Error while fetching data"
+                    let alert = UIAlertController.init(title: "Error",
+                                                       message: errorMsg,
+                                                       preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { [weak self] _ in
+                        guard let self = self else { return }
+                        self.getPeoples()
+                    })
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }

@@ -51,13 +51,25 @@ class HomeCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = cornerRadius
         imageView.layer.masksToBounds = true
 
-        let btnColors = FlatColors.NeonLife.colors()
+        let btnColors = getButtonColors()
         buttonOutlet.addGradientLayer(colors: [btnColors[0], btnColors[1]], cornerRadius: cornerRadius)
         buttonOutlet.setTitleColor(.black, for: .normal)
         buttonOutlet.addShadow()
         
         backgroundViewForSubtitle.layer.cornerRadius = cornerRadius
         //subtitleLabel.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+    }
+    
+    private func getButtonColors() -> [UIColor] {
+        
+        switch tag {
+        case 0:
+            return FlatColors.NeonLife.colors().reversed()
+        case 1:
+            return FlatColors.Sunrise.colors()
+        default:
+            return FlatColors.Kyoopal.colors()
+        }
     }
     
     func setupCell(buttonTitle: String, tag: Int, image: UIImage, peopleCount: Int = 0) {

@@ -25,6 +25,9 @@ class PassTimeCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+    }
+    
+    func colorTheCell() {
         
         let componentString = data.date.getShortTime().components(separatedBy: " ").last!
         if componentString == "AM" {
@@ -40,7 +43,5 @@ class PassTimeCell: UITableViewCell {
         dateLabel.text = data.date.getDate()
         timeLabel.text = data.date.getShortTime()
         durationLabel.text = "ISS will visible for \(Int(data.time.minute)) minutes"
-        
-        
     }
 }

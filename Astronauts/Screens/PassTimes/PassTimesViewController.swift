@@ -50,12 +50,17 @@ class PassTimesViewController: BaseViewController {
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
             break
+        @unknown default:
+            break
         }
     }
     
     private func UpdateCurrentLocationLabel(location: CLLocation) {
         let reverseGeoCode = RevereseGeocode(latitiude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        reverseGeoCode.getAddress { (address) in
+        reverseGeoCode.getAddress {[weak self] (address) in
+            
+            guard let self = self else { return }
+            
             DispatchQueue.main.async {
                 if let currentLocation = address {
                     self.currentLocationLabel.text = "Your Location: \(currentLocation)"
@@ -66,14 +71,22 @@ class PassTimesViewController: BaseViewController {
     
     private func requestPassTimeData(location: CLLocation) {
         RequestManager.getPassTime(location: location) {[weak self] (passTimeRsponse) in
+            
+            guard let self = self else { return }
+
             DispatchQueue.main.async {
-                guard let self = self else { return }
                 switch passTimeRsponse.result.status {
                 case .success:
                     self.passTimeData = passTimeRsponse.passes
                     self.tableView.reloadData()
                 case .fail:
-                    print("Response failed.")
+                    let errorMsg = passTimeRsponse.result.message ?? "Error while fetching data"
+                    let alert = UIAlertController.init(title: "Error",
+                                                       message: errorMsg,
+                                                       preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }
@@ -118,10 +131,17 @@ extension PassTimesViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let cell = cell as? PassTimeCell {
+            cell.colorTheCell()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return passTimeData.count
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return UITableView.automaticDimension
     }
 }

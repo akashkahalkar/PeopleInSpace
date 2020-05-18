@@ -21,6 +21,7 @@ struct ISSPassTime {
     }
     
     init(_ response: [String: Any]) {
+        
         duration = response["duration"] as? Double ?? 0
         riseTime = response["risetime"] as? Double ?? 0
         date = DateUtility(date: riseTime)
@@ -28,9 +29,9 @@ struct ISSPassTime {
 }
 
 struct ISSPassTimeResponse {
-    var result: ResponseResult = (.fail, "Unable to get data.")
     
     var passes: [ISSPassTime] = []
+    var result: ResponseResult = (.fail, "Unable to get data.")
     
     init(_ response: [String: Any]?, _ error: Error?) {
         if let response = response, let passTimeArray = response["response"] as? [[String: Any]] {
