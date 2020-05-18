@@ -15,6 +15,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var backgroundViewForSubtitle: UIView!
     
     let titleArray = ["People in Space",
                       "Current Location Of the ISS",
@@ -37,12 +38,15 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    func colorTheCell() {
         backgroundColor = .clear
-        let colors = FlatColors.NeonLife.colors()
+        //let colors = FlatColors.NeonLife.colors()
         
         bgView.addShadow()
         bgView.layer.cornerRadius = cornerRadius
-        bgView.addGradientLayer(colors: [colors[1], colors[0]])
+        //bgView.addGradientLayer(colors: [colors[1], colors[0]])
         
         imageView.layer.cornerRadius = cornerRadius
         imageView.layer.masksToBounds = true
@@ -52,7 +56,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
         buttonOutlet.setTitleColor(.black, for: .normal)
         buttonOutlet.addShadow()
         
-        subtitleLabel.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        backgroundViewForSubtitle.layer.cornerRadius = cornerRadius
+        //subtitleLabel.backgroundColor = UIColor.black.withAlphaComponent(0.3)
     }
     
     func setupCell(buttonTitle: String, tag: Int, image: UIImage, peopleCount: Int = 0) {

@@ -16,8 +16,12 @@ class AstronautHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addCollectionViewBackground()
         getPeopleInSpace()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addCollectionViewBackground()
     }
     
     func getPeopleInSpace() {
@@ -36,12 +40,12 @@ class AstronautHomeViewController: UIViewController {
     }
     
     private func addCollectionViewBackground() {
-        let gView = UIView(frame: collectionView.frame)
+        let gView = UIView(frame: view.frame)
         let gradientLayer = CAGradientLayer()
         let colors = FlatColors.DIMIGO.colors()
         gradientLayer.colors = [colors[3].cgColor, colors[0].cgColor]
         gradientLayer.frame = gView.frame
-        gView.layer.addSublayer(gradientLayer)        
+        gView.layer.addSublayer(gradientLayer)
         collectionView.backgroundView = gView
     }
 }
@@ -65,8 +69,14 @@ extension AstronautHomeViewController: UICollectionViewDataSource, UICollectionV
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? HomeCollectionViewCell {
+            cell.colorTheCell()
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+        return CGSize(width: view.bounds.width, height: view.bounds.height - 50)
     }
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

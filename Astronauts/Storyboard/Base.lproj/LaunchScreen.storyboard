@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,11 +19,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Ouc-L4-k7d">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People in Space" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W68-M4-ONc">
+                                <rect key="frame" x="111" y="94" width="192" height="34"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="W68-M4-ONc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="LJw-0u-5vD"/>
                             <constraint firstItem="Ouc-L4-k7d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cDQ-H9-7eO"/>
                             <constraint firstItem="Ouc-L4-k7d" firstAttribute="bottom" secondItem="Ze5-6b-2t3" secondAttribute="bottom" id="gxu-X1-Ggb"/>
+                            <constraint firstItem="W68-M4-ONc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="kzL-mn-0Jt"/>
                             <constraint firstItem="Ouc-L4-k7d" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="rrR-he-0L8"/>
                             <constraint firstItem="Ouc-L4-k7d" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="s1E-Os-wBg"/>
                         </constraints>
@@ -38,6 +44,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="2615" height="4649"/>
+        <image name="background" width="1307.5" height="2324.5"/>
     </resources>
 </document>

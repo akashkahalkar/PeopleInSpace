@@ -65,6 +65,7 @@ class CurrentLocationViewController: BaseViewController {
         labelLaunchDate = UILabel(frame: CGRect(x: 20, y: 80, width: view.bounds.width - 50, height: 60))
         labelLaunchDate.textColor = UIColor.white
         labelLaunchDate.textAlignment = .center
+        labelLaunchDate.numberOfLines = 0
         view.addSubview(labelLaunchDate)
         
         //add close button
@@ -134,9 +135,9 @@ class CurrentLocationViewController: BaseViewController {
         reverseGeoCode.getAddress { (address) in
             DispatchQueue.main.async {
                 if let currentLocation = address {
-                    self.labelLaunchDate.text = "Currently flying over \(currentLocation)"
+                    self.labelLaunchDate.text = "\(currentLocation)"
                 } else {
-                    self.labelLaunchDate.text = "NA"
+                    self.labelLaunchDate.text = "Unable to get address for coordinates"
                 }
             }
         }
