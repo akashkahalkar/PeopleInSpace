@@ -70,7 +70,7 @@ class PassTimesViewController: BaseViewController {
     }
     
     private func requestPassTimeData(location: CLLocation) {
-        RequestManager.getPassTime(location: location) {[weak self] (passTimeRsponse) in
+        RequestManager.shared.getPassTime(location: location) {[weak self] (passTimeRsponse) in
             
             guard let self = self else { return }
 

@@ -39,7 +39,7 @@ class CurrentPeopleViewController: BaseViewController {
     
     //MARK: - Api call
     private func getPeoples() {
-        RequestManager.getCurrentPeople {[weak self] (response) in
+        RequestManager.shared.getCurrentPeople {[weak self] (response) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 if self.refreshControl.isRefreshing {

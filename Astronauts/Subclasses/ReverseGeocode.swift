@@ -12,8 +12,6 @@ import CoreLocation
 class RevereseGeocode {
     
     var locationCoordinate:  CLLocation
-    private var addressString = "NA"
-
     lazy var geo: CLGeocoder = {
         return CLGeocoder()
     }()
@@ -27,28 +25,14 @@ class RevereseGeocode {
             if (error != nil) {
                 print("Reverse geocoding failure: \(error!.localizedDescription)")
                 completion(nil)
+                return
             }
-            let pm = placemarks! as [CLPlacemark]
-            if pm.count > 0 {
-                let address = placemarks![0]
-                //                        print(pm.country, "country")
-                //                        print(pm.locality, "locality")
-                //                        print(pm.subLocality, "subLocale")
-                //                        print(pm.thoroughfare, "throughtfare")
-                //                        print(pm.postalCode, "postalCode")
-                //                        print(pm.subThoroughfare, "subThrought")
-                //                        print(pm.administrativeArea, "adminstrative")
-                //                        print(pm.areasOfInterest?.description, "areaOfInteres")
-                //                        print(pm.name, "name")
-                //                        print(pm.ocean, "ocean")
-                //                        print(pm.subAdministrativeArea, "subAdmin")
-                
-                
+            if let address = placemarks?.first {
                 let country = address.country ?? ""
                 let locality = address.locality ?? ""
                 let name = address.name ?? ""
-                self.addressString = "\(country) \(locality) \(name)"
-                completion(self.addressString)
+                let addressString = "\(country) \(locality) \(name)"
+                completion(addressString)
             } else {
                 completion(nil)
             }
