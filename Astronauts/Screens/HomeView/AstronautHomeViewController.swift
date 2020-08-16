@@ -17,6 +17,7 @@ class AstronautHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getPeopleInSpace()
+        pageControl.numberOfPages = CollectionsCellType.allCases.count
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -25,7 +26,7 @@ class AstronautHomeViewController: UIViewController {
     }
     
     private func getPeopleInSpace() {
-        RequestManager.getCurrentPeople {[weak self] (peoples) in
+        RequestManager.shared.getCurrentPeople {[weak self] (peoples) in
             
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -66,17 +67,18 @@ class AstronautHomeViewController: UIViewController {
 extension AstronautHomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return CollectionsCellType.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as? HomeCollectionViewCell)!
         let cellType = CollectionsCellType(rawValue: indexPath.row)!
-        cell.setupCell(buttonTitle: "SHOW",
-                       tag: indexPath.row,
-                       image: cellType.image()!,
-                       peopleCount: astronauts.count)
+        
+        cell.setupCell(cellType: cellType,
+                       buttonTitle: "SHOW",
+                       tag: indexPath.row, peopleCount: self.astronauts.count)
+        
         cell.tapEvent = { tag in
             self.pushScreens(for: CollectionsCellType(rawValue: tag)!)
         }
@@ -99,31 +101,44 @@ extension AstronautHomeViewController: UICollectionViewDataSource, UICollectionV
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let cells = collectionView.visibleCells
-        if let cell = cells.first, let indexPath = collectionView.indexPath(for: cell) {
+        if
+            let cell = cells.first,
+            let indexPath = collectionView.indexPath(for: cell) {
+            
             pageControl.currentPage = indexPath.row
         }
     }
     
     private func pushScreens(for cellType: CollectionsCellType) {
         
-        var viewControllerToPresent: UIViewController?
-        
-        switch cellType {
+        guard let viewController = getViewControllerToPresent(screenType: cellType) else { return }
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    private func getViewControllerToPresent(screenType: CollectionsCellType) -> UIViewController? {
+        switch screenType {
         
         case .peopleCell:
-            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CurrentPeopleViewController") as? CurrentPeopleViewController
+            let viewController =
+                UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CurrentPeopleViewController") as? CurrentPeopleViewController
             viewController?.astronauts = self.astronauts
-            viewControllerToPresent = viewController
+            return viewController
+            
         case .passTime:
-            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CurrentLocationViewController") as? CurrentLocationViewController
-            viewControllerToPresent = viewController
+            let viewController =
+                UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CurrentLocationViewController") as? CurrentLocationViewController
+            return viewController
+            
         case .currentLocation:
-            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PassTimesViewController") as? PassTimesViewController
-            viewControllerToPresent = viewController
+            let viewController =
+                UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PassTimesViewController") as? PassTimesViewController
+            return viewController
+            
+        case .imageOfTheDay:
+            let viewController =
+                UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageOfTheDayViewController") as? ImageOfTheDayViewController
+            return viewController
         }
-        
-        guard let viewController = viewControllerToPresent else { return }
-        present(viewController, animated: true, completion: nil)
     }
 }
 

@@ -94,7 +94,7 @@ class CurrentLocationViewController: BaseViewController {
     
     //MARK: - API calls
     @objc fileprivate func updateCraftLocation() {
-        RequestManager.getCurrentLocation {[weak self] (craftLocationResponse) in
+        RequestManager.shared.getCurrentLocation {[weak self] (craftLocationResponse) in
             guard let self = self else { return }
             
             DispatchQueue.main.async {

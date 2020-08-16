@@ -28,6 +28,7 @@
 		380D64C8223AA6D5002D3E85 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380D64C7223AA6D5002D3E85 /* RequestManager.swift */; };
 		380D64CA223AA8A8002D3E85 /* CraftLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380D64C9223AA8A8002D3E85 /* CraftLocation.swift */; };
 		380D64CD223AB7B9002D3E85 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380D64CC223AB7B9002D3E85 /* DetailsTableViewCell.swift */; };
+		388F2FF324E93A74003F535C /* ImageOfTheDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388F2FF224E93A74003F535C /* ImageOfTheDayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		380D64C7223AA6D5002D3E85 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		380D64C9223AA8A8002D3E85 /* CraftLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftLocation.swift; sourceTree = "<group>"; };
 		380D64CC223AB7B9002D3E85 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
+		388F2FF224E93A74003F535C /* ImageOfTheDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOfTheDayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 		2C8CC53522C47FF800DCFD0D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				388F2FF124E935CB003F535C /* Image of the day */,
 				2C88BCBC22BCD575008B041C /* CurrentLocation */,
 				2C88BCBB22BCD56D008B041C /* PassTimes */,
 				2C6A76BB22C3802500C4CC9E /* HomeView */,
@@ -223,6 +226,14 @@
 				2C88BCB622BCA3C2008B041C /* HomeCollectionViewCell.swift */,
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		388F2FF124E935CB003F535C /* Image of the day */ = {
+			isa = PBXGroup;
+			children = (
+				388F2FF224E93A74003F535C /* ImageOfTheDayViewController.swift */,
+			);
+			path = "Image of the day";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +324,7 @@
 				380D64CA223AA8A8002D3E85 /* CraftLocation.swift in Sources */,
 				2C88BCC222BCD62B008B041C /* PassTimesViewController.swift in Sources */,
 				2C88BCB522BC9A1F008B041C /* AstronautHomeViewController.swift in Sources */,
+				388F2FF324E93A74003F535C /* ImageOfTheDayViewController.swift in Sources */,
 				2C6A76B322C362CC00C4CC9E /* DateUtility.swift in Sources */,
 				2C6A76B622C365CC00C4CC9E /* PassTimeCell.swift in Sources */,
 				2C88BCB922BCA7E8008B041C /* Extensions.swift in Sources */,

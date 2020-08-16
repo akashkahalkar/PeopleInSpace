@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
 enum RequestManagerError: Error {
     case urlNotFound, unrechable, noData
@@ -15,10 +16,15 @@ enum RequestManagerError: Error {
 
 class RequestManager {
     
+    static let shared = RequestManager()
+    var imageCache: [String: UIImage] = [:]
+    
+    private init() {}
+    
     /// Get list of People in space
     ///
     /// - Parameter completion: returns PeopleResponse which holds number of people in space along with there names
-    class func getCurrentPeople(completion: @escaping(PeopleResponse) -> Void) {
+    func getCurrentPeople(completion: @escaping(PeopleResponse) -> Void) {
         let urlString = Urls.peopleInSpaceUrl
         guard let url = URL(string: urlString) else {
             completion(PeopleResponse(nil, RequestManagerError.urlNotFound))
@@ -41,7 +47,7 @@ class RequestManager {
     /// Get current location of International space station
     ///
     /// - Parameter completion: completion returns CraftLocation response which holds coordinates for current location of craft.
-    class func getCurrentLocation(completion: @escaping(CraftLocationResponse) -> Void) {
+    func getCurrentLocation(completion: @escaping(CraftLocationResponse) -> Void) {
         let urlString = Urls.currentLocationUrl
         guard let url = URL(string: urlString) else {
             completion(CraftLocationResponse(nil, RequestManagerError.urlNotFound))
@@ -67,7 +73,7 @@ class RequestManager {
     /// - Parameters:
     ///   - location: latitudes and logitude for which the pass times required
     ///   - completion: completion block return ISSPassTimeResponse which holds 5 time stamps for when ISS will fly over current location
-    class func getPassTime(location: CLLocation, completion: @escaping(ISSPassTimeResponse) -> Void) {
+    func getPassTime(location: CLLocation, completion: @escaping(ISSPassTimeResponse) -> Void) {
         
         let finalString = Urls.getPassTimeUrl(for: location)
         
@@ -88,6 +94,33 @@ class RequestManager {
                 completion(ISSPassTimeResponse(nil, error))
             }
         }.resume()
+    }
+}
+
+//MARK: - NASA Atronomical image of the day (NAIOD) Api
+extension RequestManager {
+    
+    func getImageOfTheDay(apiKey: String = "DEMO_KEY", completion: @escaping(ImageOfTheDay) -> Void) {
+        
+        let urlString = Urls.getImageOfTheDayUrl(apiKey: apiKey)
+        
+        guard let url = URL(string: urlString) else {
+            completion(ImageOfTheDay(nil, RequestManagerError.urlNotFound))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url, completionHandler: {(data, _, error) in
+            if let data = data {
+                do {
+                    let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                    completion(ImageOfTheDay(jsonData, error))
+                } catch let error {
+                    completion(ImageOfTheDay(nil, error))
+                }
+            } else {
+              completion(ImageOfTheDay(nil, error))
+            }
+        }).resume()
     }
 }
 
