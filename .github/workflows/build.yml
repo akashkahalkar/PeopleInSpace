@@ -13,4 +13,4 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Start xcodebuild test
-      run: xcodebuild clean test -project Astronauts.xcodeproj -scheme Astronauts -destination "platform=iOS Simulator,name=iPhone 11 Pro"
+      run: xcodebuild clean build -project Astronauts.xcodeproj -scheme astronauts -destination "platform=iOS Simulator,name=iPhone 11 pro"
