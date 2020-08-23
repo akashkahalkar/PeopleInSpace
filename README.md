@@ -1,4 +1,7 @@
 # PeopleInSpace
+
+![Build](https://github.com/akashkahalkar/PeopleInSpace/workflows/Build/badge.svg)
+
 A beautifull Application which lists people currently in space using [Open Notify](http://api.open-notify.org/) api.
 It also show current location info about ISS (International space station).
 
