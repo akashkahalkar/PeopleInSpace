@@ -1,2 +1,5 @@
 
 *.xcuserstate
+.DS_Store
+*.xcbuild
+build/XCBuildData/BuildDescriptionCacheIndex-6e76d3831f5c691f0695feee5e332c72

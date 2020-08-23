@@ -1,0 +1,16 @@
+name: Build
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+    
+    steps:
+    - uses: actions/checkout@master
+    - name: Start xcodebuild test
+      run: xcodebuild clean build -project Astronauts.xcodeproj -scheme astronauts -destination "platform=iOS Simulator,name=iPhone 11 pro"
