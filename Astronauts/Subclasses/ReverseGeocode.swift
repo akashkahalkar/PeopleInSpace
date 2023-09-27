@@ -9,10 +9,10 @@
 import Foundation
 import CoreLocation
 
-class RevereseGeocode {
+final class RevereseGeocode {
     
-    var locationCoordinate:  CLLocation
-    lazy var geo: CLGeocoder = {
+    private var locationCoordinate:  CLLocation
+    private lazy var geo: CLGeocoder = {
         return CLGeocoder()
     }()
     
@@ -22,19 +22,20 @@ class RevereseGeocode {
     
     func getAddress(completion: @escaping ((String?) -> Void)) {
         geo.reverseGeocodeLocation(locationCoordinate) { (placemarks, error) in
-            if (error != nil) {
-                print("Reverse geocoding failure: \(error!.localizedDescription)")
+            if let error {
+                print("Reverse geocoding failure: \(error.localizedDescription)")
                 completion(nil)
                 return
-            }
-            if let address = placemarks?.first {
-                let country = address.country ?? ""
-                let locality = address.locality ?? ""
-                let name = address.name ?? ""
-                let addressString = "\(country) \(locality) \(name)"
-                completion(addressString)
             } else {
-                completion(nil)
+                if let address = placemarks?.first {
+                    let country = address.country ?? ""
+                    let locality = address.locality ?? ""
+                    let name = address.name ?? ""
+                    let addressString = "\(country) \(locality) \(name)"
+                    completion(addressString)
+                } else {
+                    completion(nil)
+                }
             }
         }
     }

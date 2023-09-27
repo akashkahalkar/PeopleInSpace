@@ -9,10 +9,10 @@
 import Foundation
 
 
-class DateUtility {
+final class DateUtility {
     
-    var currentDate: Date
-    var formatter = DateFormatter()
+    private var currentDate: Date
+    private let formatter = DateFormatterSingleton.shared
     
     init(date: Double) {
         currentDate = Date(timeIntervalSince1970: date)
@@ -27,4 +27,9 @@ class DateUtility {
         formatter.dateFormat = "MMM - dd, YYYY"
         return formatter.string(from: currentDate)
     }
+}
+
+class DateFormatterSingleton {
+    static let shared = DateFormatter()
+    private init() { }
 }

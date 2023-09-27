@@ -14,6 +14,7 @@ class PassTimeCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
+    
     var data: ISSPassTime!
     let day = FlatColors.Maldives.colors()
     let night = FlatColors.SolidStone.colors()
@@ -29,12 +30,12 @@ class PassTimeCell: UITableViewCell {
     
     func colorTheCell() {
         
-        let componentString = data.date.getShortTime().components(separatedBy: " ").last!
-        if componentString == "AM" {
-            bgView.addGradientLayer(colors: [day[2], day[3]], cornerRadius: 5, startPoint: .bottomLeft, endPoint: .topRight)
-        } else {
-            bgView.addGradientLayer(colors: [night[2], night[3]], cornerRadius: 5, startPoint: .bottomLeft, endPoint: .topRight)
+        guard let componentString = data.date.getShortTime().components(separatedBy: " ").last else {
+            return
         }
+        
+        let colors = componentString == "AM" ? [day[2], day[3]] : [night[2], night[3]]
+        bgView.addGradientLayer(colors: colors, cornerRadius: 5, startPoint: .bottomLeft, endPoint: .topRight)
         bgView.addShadow()
     }
 

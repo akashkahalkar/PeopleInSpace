@@ -14,7 +14,7 @@ enum RequestManagerError: Error {
     case urlNotFound, unrechable, noData
 }
 
-class RequestManager {
+final class RequestManager {
     
     static let shared = RequestManager()
     var imageCache: [String: UIImage] = [:]
@@ -100,8 +100,12 @@ class RequestManager {
 //MARK: - NASA Atronomical image of the day (NAIOD) Api
 extension RequestManager {
     
-    func getImageOfTheDay(apiKey: String = "DEMO_KEY", completion: @escaping(ImageOfTheDay) -> Void) {
+    func getImageOfTheDay(apiKey: String?, completion: @escaping(ImageOfTheDay) -> Void) {
         
+        guard let apiKey else {
+            fatalError("Api key missing. please visit https://api.nasa.gov/ to get one")
+        }
+
         let urlString = Urls.getImageOfTheDayUrl(apiKey: apiKey)
         
         guard let url = URL(string: urlString) else {

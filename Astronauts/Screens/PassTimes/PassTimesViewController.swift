@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class PassTimesViewController: BaseViewController {
+final class PassTimesViewController: BaseViewController {
 
     @IBOutlet weak var currentLocationLabel: UILabel!
     @IBOutlet weak var closeButtonOutlet: UIButton!
@@ -59,7 +59,7 @@ class PassTimesViewController: BaseViewController {
         let reverseGeoCode = RevereseGeocode(latitiude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         reverseGeoCode.getAddress {[weak self] (address) in
             
-            guard let self = self else { return }
+            guard let self else { return }
             
             DispatchQueue.main.async {
                 if let currentLocation = address {
@@ -119,6 +119,9 @@ extension PassTimesViewController: CLLocationManagerDelegate {
         case .authorizedWhenInUse, .authorizedAlways:
             locationManager.startUpdatingLocation()
             break
+            
+        @unknown default:
+            fatalError("Unknown case")
         }
     }
 }
