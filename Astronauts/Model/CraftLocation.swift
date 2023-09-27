@@ -28,7 +28,8 @@ struct CraftLocation {
     }()
     
     var location: CLLocation {
-        return CLLocation(latitude: Double(latitudeString) ?? 0, longitude: Double(longitudeString) ?? 0)
+        return CLLocation(latitude: Double(latitudeString) ?? 0,
+                          longitude: Double(longitudeString) ?? 0)
     }
     
     init(_ response: [String: Any]) {

@@ -18,8 +18,8 @@ class CurrentLocationViewController: BaseViewController {
     @IBOutlet weak var closeButtonOutlet: UIButton!
     
     //MARK: - Properties
-    var labelLaunchDate: UILabel!
-    var timer = Timer()
+    private var labelLaunchDate: UILabel!
+    private var timer = Timer()
     lazy var label: UILabel = {
         return UILabel(frame: .zero)
     }()
@@ -132,13 +132,12 @@ class CurrentLocationViewController: BaseViewController {
     func getAddressFromLatLon(latitude: Double, longitude: Double) {
         
         let reverseGeoCode = RevereseGeocode(latitiude: latitude, longitude: longitude)
-        reverseGeoCode.getAddress { (address) in
+        reverseGeoCode.getAddress { [weak self] (address) in
+            
+            guard let self else { return }
+            
             DispatchQueue.main.async {
-                if let currentLocation = address {
-                    self.labelLaunchDate.text = "\(currentLocation)"
-                } else {
-                    self.labelLaunchDate.text = "Unable to get address for coordinates"
-                }
+                self.labelLaunchDate.text = address ?? "Unable to get address for coordinates"
             }
         }
     }

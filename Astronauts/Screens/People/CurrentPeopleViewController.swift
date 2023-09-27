@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrentPeopleViewController: BaseViewController {
+final class CurrentPeopleViewController: BaseViewController {
 
     //MARK: - properties
     var astronauts: [Astronaut] = []

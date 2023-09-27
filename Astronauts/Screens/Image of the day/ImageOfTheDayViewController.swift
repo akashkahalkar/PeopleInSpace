@@ -33,7 +33,9 @@ class ImageOfTheDayViewController: UIViewController {
     }
     
     private func getImageOfTheDay() {
-        RequestManager.shared.getImageOfTheDay { (NOPD) in
+        RequestManager.shared.getImageOfTheDay(apiKey: nil) { [weak self] (NOPD) in
+            
+            guard let self else { return }
             
             DispatchQueue.main.async {
                 
@@ -42,18 +44,19 @@ class ImageOfTheDayViewController: UIViewController {
                 case .success:
                     self.imageTitle.text = NOPD.title
                     self.imageDescription.text = NOPD.explanation
+                    
                     if let image = RequestManager.shared.imageCache[NOPD.imageURL] {
                         self.imageOfTheDay.image = image
                     } else if let url = URL(string: NOPD.imageURL) {
                         
                         DispatchQueue.global().async {
                             do {
-                                let data = try? Data(contentsOf: url)
+                                guard let data = try? Data(contentsOf: url) else {
+                                    return
+                                }
                                 DispatchQueue.main.async {
-                                    if let data = data {
-                                        self.imageOfTheDay.image = UIImage(data: data)
-                                        RequestManager.shared.imageCache[NOPD.imageURL] = self.imageOfTheDay.image
-                                    }
+                                    self.imageOfTheDay.image = UIImage(data: data)
+                                    RequestManager.shared.imageCache[NOPD.imageURL] = self.imageOfTheDay.image
                                 }
                             }
                         }
