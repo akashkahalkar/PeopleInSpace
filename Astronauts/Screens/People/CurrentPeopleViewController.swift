@@ -16,6 +16,12 @@ final class CurrentPeopleViewController: BaseViewController {
     @IBOutlet weak var updateStatus: UILabel!
     @IBOutlet weak var closeButtonOutlet: UIButton!
     var hasAllCellsAnimated = false
+    private lazy var formatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .medium
+        return formatter
+    }()
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -69,15 +75,7 @@ final class CurrentPeopleViewController: BaseViewController {
     }
     
     fileprivate func changeUpdateLabelStatus() {
-        
-        let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .medium
         let dateString = formatter.string(from: Date())
-        
-//        let dateString = Date().description
-//        let dateComponent = dateString.components(separatedBy: " ")
         updateStatus.text = "Last update: \(dateString)"
     }
     
@@ -102,23 +100,6 @@ extension CurrentPeopleViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-       animateCells(cell, row: indexPath.row)
-    }
-    
-    private func animateCells(_ cell: UITableViewCell, row: Int) {
-        if !hasAllCellsAnimated {
-            cell.alpha = 0
-            UIView.animate(withDuration: 0.5, delay: 0.5 * Double(row), options: [.curveEaseIn], animations: {
-                cell.alpha = 1
-            }, completion: { (_) in
-                if row == (self.astronauts.count - 1) {
-                    self.hasAllCellsAnimated = true
-                }
-            })
-        }
     }
 }
 

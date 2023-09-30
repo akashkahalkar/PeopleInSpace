@@ -11,7 +11,7 @@ import UIKit
 final class HomeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var bgView: UIView!
-    @IBOutlet weak var buttonOutlet: UIButton!
+    @IBOutlet private weak var buttonOutlet: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -21,36 +21,23 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     var tapEvent: ((Int)->())?
     
     override func awakeFromNib() {
+        self.buttonOutlet.isHidden = true
         super.awakeFromNib()
     }
     
     func colorTheCell() {
         backgroundColor = .clear
-    
         bgView.addShadow()
         bgView.layer.cornerRadius = cornerRadius
-        //bgView.addGradientLayer(colors: [colors[1], colors[0]])
-        
         imageView.layer.cornerRadius = cornerRadius
         imageView.layer.masksToBounds = true
+        
+        backgroundViewForSubtitle.layer.cornerRadius = cornerRadius
 
         let btnColors = getButtonColors()
         buttonOutlet.addGradientLayer(colors: [btnColors[0], btnColors[1]], cornerRadius: cornerRadius)
         buttonOutlet.setTitleColor(.black, for: .normal)
         buttonOutlet.addShadow()
-        backgroundViewForSubtitle.layer.cornerRadius = cornerRadius
-//        let blurrView = UIVisualEffectView(effect: getBlurrEffect())
-//        blurrView.layer.cornerRadius = cornerRadius
-//        blurrView.clipsToBounds = true
-//        blurrView.alpha = 0.4
-//        backgroundViewForSubtitle.addSubview(blurrView)
-//
-//        blurrView.translatesAutoresizingMaskIntoConstraints = false
-//        let horizontalConstraint = NSLayoutConstraint(item: blurrView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: backgroundViewForSubtitle, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-//        let verticalConstraint = NSLayoutConstraint(item: blurrView, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: backgroundViewForSubtitle, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-//        let widthConstraint = NSLayoutConstraint(item: blurrView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: backgroundViewForSubtitle, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: 0)
-//        let heightConstraint = NSLayoutConstraint(item: blurrView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: backgroundViewForSubtitle, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 0)
-//        backgroundViewForSubtitle.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
     }
     
     private func getBlurrEffect() -> UIBlurEffect {
@@ -73,19 +60,38 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func setupCell(cellType: CollectionsCellType, buttonTitle: String, tag: Int, peopleCount: Int = 0) {
+    func setupCell(cellType: CollectionsCellType, buttonTitle: String, tag: Int, peopleCount: Int) {
         self.tag = tag
-        buttonOutlet.setTitle(buttonTitle, for: .normal)
         imageView.image = cellType.image()
         titleLabel.text = cellType.title()
         
-        if cellType == .peopleCell {
-            subtitleLabel.text = cellType.subtitle().replacingOccurrences(of: "##COUNT##", with: String(peopleCount))
-        } else {
+        switch cellType {
+            
+        case .peopleCell:
+            configurePeoplesCell(peopleCount: peopleCount, cellType: cellType)
+        case .passTime:
+            self.buttonOutlet.isHidden = true
             subtitleLabel.text = cellType.subtitle()
+        case .currentLocation, .imageOfTheDay:
+            subtitleLabel.text = cellType.subtitle()
+            self.buttonOutlet.isHidden = false
         }
+        buttonOutlet.setTitle(buttonTitle, for: .normal)
     }
     
+    private func configurePeoplesCell(peopleCount: Int, cellType: CollectionsCellType) {
+        if peopleCount > 0 {
+            self.buttonOutlet.isHidden = false
+            self.subtitleLabel.text = cellType.subtitle()
+                .replacingOccurrences(of: "##COUNT##",
+                                      with: String(peopleCount))
+            
+        } else {
+            subtitleLabel.text = "No Information available"
+            subtitleLabel.textAlignment = .center
+            buttonOutlet.isHidden = true
+        }
+    }
     @IBAction func buttonAction(_ sender: UIButton) {
         tapEvent?(tag)
     }
