@@ -11,7 +11,7 @@ import UIKit
 import CoreLocation
 
 enum CollectionsCellType: Int, CaseIterable {
-    case peopleCell, passTime, currentLocation, imageOfTheDay
+    case peopleCell, currentLocation, imageOfTheDay, passTime
     
     func image() -> UIImage? {
         switch self {
@@ -33,10 +33,13 @@ enum CollectionsCellType: Int, CaseIterable {
             
         case .peopleCell:
             return "People in Space"
+            
         case .passTime:
-            return "Current Location of the ISS"
-        case .currentLocation:
             return "Next Pass Above You"
+            
+        case .currentLocation:
+            return "Current Location of the ISS"
+            
         case .imageOfTheDay:
             return "Astronmical Image of the Day"
         }
@@ -48,16 +51,17 @@ enum CollectionsCellType: Int, CaseIterable {
         case .peopleCell:
             return "There are total of ##COUNT## people in space."
         case .passTime:
+            return "Check when the ISS will travel from above you. (pass time feature disabled due to deprecated api)"
+            
+        case .currentLocation:
             return """
             The International Space Station (ISS) is a space station, its first component was launched into orbit in 1998.\n
             Orbital speed: 27,600 km/h\n
             Orbital period: 92.68 minutes\n
             Orbital inclination: 51.64 degrees\n
             Orbits per day: 15.54\n
-            Tap the button below to see current location of space station.
             """
-        case .currentLocation:
-            return "Check when the ISS will travel from above you."
+            
         case .imageOfTheDay:
             return """
             Each day a different image or photograph of our fascinating universe is featured,\n

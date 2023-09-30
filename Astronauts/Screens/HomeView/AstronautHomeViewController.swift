@@ -12,7 +12,7 @@ final class AstronautHomeViewController: UIViewController {
 
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
-    var astronauts = [Astronaut]()
+    private var astronauts = [Astronaut]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,9 @@ final class AstronautHomeViewController: UIViewController {
                 switch peoples.result.status {
                 case .success:
                     self.astronauts = peoples.peoples
-                    //self.collectionView.reloadData()
+                    self.collectionView.performBatchUpdates {
+                        self.collectionView.reloadItems(at: [IndexPath(row: 0, section: 0)])
+                    }
                 case .fail:
                     let errorMsg = peoples.result.message ?? "Error while fetching data"
                     self.showAlert(errorMsg)
@@ -76,12 +78,20 @@ extension AstronautHomeViewController: UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as? HomeCollectionViewCell)!
-        let cellType = CollectionsCellType(rawValue: indexPath.row)!
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "HomeCollectionViewCell",
+            for: indexPath
+        ) as? HomeCollectionViewCell
+        
+        guard let cell,
+              let cellType = CollectionsCellType(rawValue: indexPath.row) else {
+            fatalError("Failed to create cell")
+        }
         
         cell.setupCell(cellType: cellType,
                        buttonTitle: "SHOW",
-                       tag: indexPath.row, peopleCount: self.astronauts.count)
+                       tag: indexPath.row, 
+                       peopleCount: self.astronauts.count)
         
         cell.tapEvent = { tag in
             self.pushScreens(for: CollectionsCellType(rawValue: tag)!)
@@ -107,6 +117,7 @@ extension AstronautHomeViewController: UICollectionViewDataSource, UICollectionV
         
         if let cell = collectionView.visibleCells.first,
            let indexPath = collectionView.indexPath(for: cell) {
+            print("x:: index", indexPath.row)
             pageControl.currentPage = indexPath.row
         }
     }
@@ -123,17 +134,20 @@ extension AstronautHomeViewController: UICollectionViewDataSource, UICollectionV
         case .peopleCell:
             let viewController =
             getStoryBoard().instantiateViewController(withIdentifier: "CurrentPeopleViewController") as? CurrentPeopleViewController
+            guard self.astronauts.count > 0 else {
+                return nil
+            }
             viewController?.astronauts = self.astronauts
             return viewController
             
         case .passTime:
             let viewController =
-            getStoryBoard().instantiateViewController(withIdentifier: "CurrentLocationViewController") as? CurrentLocationViewController
+            getStoryBoard().instantiateViewController(withIdentifier: "PassTimesViewController") as? PassTimesViewController
             return viewController
             
         case .currentLocation:
             let viewController =
-            getStoryBoard().instantiateViewController(withIdentifier: "PassTimesViewController") as? PassTimesViewController
+            getStoryBoard().instantiateViewController(withIdentifier: "CurrentLocationViewController") as? CurrentLocationViewController
             return viewController
             
         case .imageOfTheDay:
