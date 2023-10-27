@@ -1,3 +1,4 @@
+
 # PeopleInSpace
 
 ![Build](https://github.com/akashkahalkar/PeopleInSpace/workflows/Build/badge.svg)
@@ -10,10 +11,10 @@ It also show current location info about ISS (International space station).
 <table>
     <tr>
         <td>
-            <img src = "Screenshots\screenshot(1).png" width = 200 alt = "Home 1">            
+            <img src = "Screenshots\screen_1.png" width = 200 alt = "Home 1">            
         </td>
         <td>
-            <img src = "Screenshots\screenshot(4).png" width = 200 alt = "Home 2">            
+            <img src = "Screenshots\screen_2.png" width = 200 alt = "Home 2">            
         </td>
         </tr>
 </table>
@@ -25,10 +26,10 @@ It also show current location info about ISS (International space station).
 <table>
     <tr>
         <td>
-            <img src = "Screenshots\screenshot(2).png" width = 200 alt = "Home 1">            
+            <img src = "Screenshots\screen_3.png" width = 200 alt = "Home 1">            
         </td>
         <td>
-            <img src = "Screenshots\screenshot(5).png" width = 200 alt = "Home 2">            
+            <img src = "Screenshots\screen_4.png" width = 200 alt = "Home 2">            
         </td>
     </tr>
 </table>
@@ -40,10 +41,10 @@ It also show current location info about ISS (International space station).
 <table>
     <tr>
         <td>
-            <img src = "Screenshots\screenshot(3).png" width = 200 alt = "Home 1">            
+            <img src = "Screenshots\screen_5.png" width = 200 alt = "Home 1">            
         </td>
         <td>
-            <img src = "Screenshots\screenshot(6).png" width = 200 alt = "Home 2">            
+            <img src = "Screenshots\screen_6.png" width = 200 alt = "Home 2">            
         </td>
      </tr>
  </table>

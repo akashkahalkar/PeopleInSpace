@@ -526,7 +526,7 @@
 				380D64C3223AA668002D3E85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		380D64C4223AA668002D3E85 /* Build configuration list for PBXNativeTarget "astronauts" */ = {
 			isa = XCConfigurationList;
@@ -535,7 +535,7 @@
 				380D64C6223AA668002D3E85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
