@@ -11,10 +11,10 @@ It also show current location info about ISS (International space station).
 <table>
     <tr>
         <td>
-            <img src = "Screenshots\screen_1.png" width = 200 alt = "Home 1">            
+            <img src = "https://github.com/akashkahalkar/PeopleInSpace/assets/9389352/0d853ff8-9324-4841-ba4f-6f462e5d95a8" width = 200 alt = "Home 1">            
         </td>
         <td>
-            <img src = "Screenshots\screen_2.png" width = 200 alt = "Home 2">            
+            <img src = "https://github.com/akashkahalkar/PeopleInSpace/assets/9389352/651d351e-a821-4b14-b569-9bcbab5d84f6" width = 200 alt = "Home 2">            
         </td>
         </tr>
 </table>
@@ -26,10 +26,10 @@ It also show current location info about ISS (International space station).
 <table>
     <tr>
         <td>
-            <img src = "Screenshots\screen_3.png" width = 200 alt = "Home 1">            
+            <img src = "https://github.com/akashkahalkar/PeopleInSpace/assets/9389352/5c3211b8-1836-4d30-b3d8-836e02c114f4" width = 200 alt = "Home 1">            
         </td>
         <td>
-            <img src = "Screenshots\screen_4.png" width = 200 alt = "Home 2">            
+            <img src = "https://github.com/akashkahalkar/PeopleInSpace/assets/9389352/b42ac316-b3cb-4d96-89cd-f8e3d583af8d" width = 200 alt = "Home 2">            
         </td>
     </tr>
 </table>
@@ -41,10 +41,10 @@ It also show current location info about ISS (International space station).
 <table>
     <tr>
         <td>
-            <img src = "Screenshots\screen_5.png" width = 200 alt = "Home 1">            
+            <img src = "https://github.com/akashkahalkar/PeopleInSpace/assets/9389352/40e9fd45-c850-4383-90b0-12e3651c8cd9" width = 200 alt = "Home 1">            
         </td>
         <td>
-            <img src = "Screenshots\screen_6.png" width = 200 alt = "Home 2">            
+            <img src = "https://github.com/akashkahalkar/PeopleInSpace/assets/9389352/58440c68-790b-4954-ac71-de8c308fb955" width = 200 alt = "Home 2">            
         </td>
      </tr>
  </table>
